@@ -7,7 +7,10 @@ No external package is required.
 Requires node.js
 
 Edit storeNumber, location, storePath, skuList according to your preferences.
-And just run the index.js file.
+
+And just run the index.js file. For continuous checking you can use watch command on Linux and macOS.
+
+It's better to run this behind a vpn. So that your ip is not blocked by apple.
 
 # Model numbers
 Might depend on the country.
