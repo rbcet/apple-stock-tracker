@@ -7,8 +7,16 @@ const skuList = ["MQ9U3ZD/A", "MQ9X3ZD/A"]; // Model numbers
 const query = skuList
     .map((k, i) => `parts.${i}=${encodeURIComponent(k)}`)
     .join("&") + `&searchNearby=true&store=${storeNumber}&location=${location}`;
+const options = {
+    hostname: 'www.apple.com',
+    path: `/${storePath}/shop/fulfillment-messages?${query}`,
+    headers: {
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+        'Referer': 'http://www.apple.com/${storePath}/shop/buy-iphone/iphone-14-pro/'
+    }
+};
 
-https.get(`https://www.apple.com/${storePath}/shop/fulfillment-messages?${query}`, (res) => {
+https.get(options, (res) => {
     let receivedData = '';
 
     res.on('data', (chunk) => {
